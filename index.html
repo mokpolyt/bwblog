@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Gagasan dan esai tentang AI, pekerjaan, uang, bisnis, teknologi, dan ekonomi yang terus berubah.">
+  <title>Future Notes — Gagasan tentang AI, Pekerjaan & Ekonomi</title>
+
+  <style>
+  :root {
+    --bg: #ffffff;
+    --text: #242424;
+    --muted: #6b6b6b;
+    --line: #e6e6e6;
+    --green: #1a8917;
+    --max: 1190px;
+    --article: 680px;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: Georgia, "Times New Roman", serif;
+    line-height: 1.65;
+  }
+
+  button, input {
+    font-family: Arial, Helvetica, sans-serif;
+  }
+
+  a { color: inherit; }
+
+  header {
+    background: #fff;
+    border-bottom: 1px solid var(--line);
+    border-top: 3px solid var(--green);
+  }
+
+  .nav {
+    width: min(calc(100% - 48px), var(--max));
+    min-height: 74px;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+  }
+
+  .logo {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 28px;
+    font-weight: 800;
+    letter-spacing: -1.5px;
+    text-decoration: none;
+    color: var(--green);
+  }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    font: 14px Arial, Helvetica, sans-serif;
+    color: #555;
+  }
+
+  .nav-links a {
+    text-decoration: none;
+  }
+
+  .nav-links a:hover {
+    color: var(--green);
+  }
+
+  .hero {
+    width: min(calc(100% - 48px), 900px);
+    margin: auto;
+    padding: 105px 0 70px;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .eyebrow {
+    font: 13px Arial, Helvetica, sans-serif;
+    color: var(--green);
+    text-transform: uppercase;
+    letter-spacing: 1.3px;
+    margin-bottom: 18px;
+    font-weight: 700;
+  }
+
+  h1 {
+    max-width: 850px;
+    margin: 0 0 22px;
+    font-size: clamp(48px, 7vw, 78px);
+    line-height: 1.02;
+    letter-spacing: -3.5px;
+    font-weight: 700;
+  }
+
+  .hero p {
+    max-width: 690px;
+    color: #6b6b6b;
+    font-size: 21px;
+    line-height: 1.5;
+    margin: 0;
+  }
+
+  .hero-image {
+    display: block;
+    width: 100%;
+    max-width: 900px;
+    height: auto;
+    border-radius: 8px;
+    margin-top: 40px;
+  }
+
+  .tools {
+    width: min(calc(100% - 48px), 900px);
+    margin: 34px auto 28px;
+  }
+
+  input {
+    width: 100%;
+    max-width: 440px;
+    padding: 13px 16px;
+    border: 1px solid #d5d5d5;
+    border-radius: 5px;
+    background: #fff;
+    color: #242424;
+    font-size: 14px;
+    outline: none;
+  }
+
+  input:focus {
+    border-color: var(--green);
+    box-shadow: 0 0 0 3px rgba(26, 137, 23, 0.12);
+  }
+
+  .post-list {
+    width: min(calc(100% - 48px), 900px);
+    margin: auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 55px;
+    padding-bottom: 90px;
+  }
+
+  .post-card {
+    padding: 30px 0 34px;
+    border-bottom: 1px solid var(--line);
+    cursor: pointer;
+  }
+
+  .post-meta {
+    font: 13px Arial, Helvetica, sans-serif;
+    color: #6b6b6b;
+    margin-bottom: 10px;
+  }
+
+  .post-card h2 {
+    margin: 0 0 9px;
+    font-size: 27px;
+    line-height: 1.18;
+    letter-spacing: -.8px;
+    font-weight: 700;
+  }
+
+  .post-card p {
+    color: #6b6b6b;
+    font-size: 16px;
+    line-height: 1.45;
+    margin: 0;
+  }
+
+  .tag {
+    display: inline-block;
+    margin-top: 15px;
+    font: 12px Arial, Helvetica, sans-serif;
+    color: var(--green);
+    font-weight: 700;
+  }
+
+  .post-card:hover h2 {
+    color: var(--green);
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 4px;
+  }
+
+  .article {
+    display: none;
+    padding: 75px 24px 110px;
+  }
+
+  .article.active {
+    display: block;
+  }
+
+  .article-inner {
+    max-width: var(--article);
+    margin: auto;
+  }
+
+  .back {
+    display: inline-block;
+    margin-bottom: 58px;
+    font: 14px Arial, Helvetica, sans-serif;
+    color: #6b6b6b;
+    text-decoration: none;
+  }
+
+  .back:hover {
+    color: var(--green);
+  }
+
+  .article h1 {
+    max-width: none;
+    margin: 0 0 18px;
+    font-size: clamp(43px, 7vw, 66px);
+    line-height: 1.04;
+    letter-spacing: -2.8px;
+  }
+
+  .article .post-meta {
+    margin-bottom: 0;
+  }
+
+  .article-content {
+    margin-top: 50px;
+    font-size: 21px;
+    line-height: 1.72;
+  }
+
+  .article-content p {
+    margin: 0 0 27px;
+  }
+
+  .article-content a {
+    color: var(--green);
+    text-decoration: underline;
+  }
+
+  .article-content h2 {
+    margin: 55px 0 18px;
+    font-size: 32px;
+    line-height: 1.2;
+    letter-spacing: -.8px;
+  }
+
+  footer {
+    border-top: 1px solid var(--line);
+    padding: 30px 24px;
+    color: #777;
+    font: 13px Arial, Helvetica, sans-serif;
+    text-align: center;
+  }
+
+  .empty {
+    grid-column: 1 / -1;
+    padding: 50px 0;
+    color: var(--muted);
+    text-align: center;
+    font: 15px Arial, Helvetica, sans-serif;
+  }
+
+  @media (max-width: 760px) {
+    .nav {
+      width: min(calc(100% - 32px), var(--max));
+    }
+
+    .nav-links {
+      gap: 14px;
+    }
+
+    .hero {
+      width: min(calc(100% - 32px), 900px);
+      padding: 65px 0 48px;
+    }
+
+    .tools,
+    .post-list {
+      width: min(calc(100% - 32px), 900px);
+    }
+
+    .post-list {
+      grid-template-columns: 1fr;
+    }
+
+    h1 {
+      letter-spacing: -2.5px;
+    }
+
+    .hero p {
+      font-size: 19px;
+    }
+
+    .article {
+      padding-top: 50px;
+    }
+
+    .article-content {
+      font-size: 19px;
+    }
+  }
+
+  @media (max-width: 500px) {
+    .logo {
+      font-size: 24px;
+    }
+
+    .nav-links a:first-child {
+      display: none;
+    }
+
+    .hero h1 {
+      font-size: 46px;
+    }
+
+    .article h1 {
+      font-size: 42px;
+    }
+  }
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="container nav">
+    <a href="#" class="logo" onclick="goHome(); return false;">Future Notes</a>
+
+    <nav class="nav-links">
+      <a href="#" onclick="goHome(); return false;">Beranda</a>
+      <a href="#about">Tentang</a>
+    </nav>
+  </div>
+</header>
+
+<main class="container">
+
+  <!-- BLOG HOME -->
+  <section id="home">
+    <div class="hero">
+      <div class="eyebrow">Gagasan • Teknologi • Ekonomi</div>
+      <h1>Memikirkan masa depan.</h1>
+      <p>
+        Artikel tentang AI, pekerjaan, uang, bisnis, teknologi,
+        dan cara bertahan di tengah ekonomi yang cepat berubah.
+      </p>
+      <img
+        src="https://raw.githubusercontent.com/mokpolyt/bwblog/refs/heads/main/imaqes/ChatGPT%20Image%20Sep%207%2C%202026%2C%2003_15_36%20PM.png"
+        alt="Future Notes"
+        class="hero-image"
+      >
+    </div>
+
+    <div class="tools">
+      <input
+        id="search"
+        type="search"
+        placeholder="Cari 100 artikel..."
+        oninput="renderPosts()"
+      >
+    </div>
+
+    <div id="postList" class="post-list"></div>
+  </section>
+
+  <!-- SINGLE ARTICLE VIEW -->
+  <section id="article" class="article">
+    <div class="article-inner">
+      <a href="#" class="back" onclick="goHome(); return false;">← Semua artikel</a>
+
+      <div id="articleMeta" class="post-meta"></div>
+      <h1 id="articleTitle"></h1>
+
+      <div id="articleContent" class="article-content"></div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="container">
+    © 2026 Future Notes. Dibuat dengan satu file HTML.
+  </div>
+</footer>
+
+
+<script>
+
+/*
+=========================================================
+BLOG DATABASE
+=========================================================
+
+Add, remove, or edit posts here.
+
+You can have 50, 100, 500 or even more posts.
+
+Each post needs:
+- title
+- date
+- category
+- excerpt
+- content
+
+The "slug" is generated automatically.
+=========================================================
+*/
+
+const posts = [
+
+  {
+    title: "Nabung Itu Penting, Tapi Ada Batasnya",
+    date: "2026-09-08",
+    category: "Uang",
+    excerpt: "Ada masalah yang nggak bisa diselesaikan cuma dengan hemat.",
+    content: `
+      <p>Nabung itu penting.</p>
+      <p>Tapi ada masalah yang nggak bisa diselesaikan dengan hemat. Hah, apaan tuh?</p>
+      <p>Lo bisa berhenti ngopi. Berhenti makan di luar. Berhenti langganan Netflix. Berhenti beli baju. Bahkan bawa bekal setiap hari.</p>
+      <p>Bagus.</p>
+      <p>Tapi ada batasnya.</p>
+      <p>Karena pengeluaran punya batas minimum.</p>
+      <p>Lo tetap harus makan. Tetap harus bayar listrik. Tetap harus bayar tempat tinggal. Tetap harus transportasi. Tetap ada kebutuhan keluarga. Kalau pun lo kurangin lebih rendah lagi, ya hidup jadi nggak ada kualitasnya. Super hambar rasanya.</p>
+      <h2>Income nggak punya batas maksimum</h2>
+      <p>Sementara income? Income nggak punya batas maksimum, bre.</p>
+      <p>Ini yang sering kita lupa.</p>
+      <p>Kita terlalu fokus: "Gimana caranya gue menghemat Rp500 ribu?"</p>
+      <p>Padahal pertanyaan yang harusnya lo ajukan: "Gimana caranya gue menghasilkan tambahan Rp2 juta?"</p>
+      <p>Beda cara berpikirnya.</p>
+      <p>Hemat itu menjaga uang yang sudah kita punya. Meningkatkan income menciptakan ruang baru.</p>
+      <h2>Financial resilience bukan cuma soal hemat</h2>
+      <p>Makanya menurut gue, financial resilience itu bukan cuma soal jago nabung. Tapi juga punya kemampuan untuk menghasilkan uang.</p>
+      <p>Skill yang bisa dijual. Jasa yang bisa ditawarkan. Bisnis kecil. Freelance. Content. Komisi. Income kedua.</p>
+      <p>Karena ada kondisi di mana lo sudah hemat banget, tapi tetap nggak cukup.</p>
+      <p>Bukan karena lo boros. Memang income lo terlalu kecil dibanding kebutuhan hidup.</p>
+      <p>Dan kalau sudah sampai titik itu, solusinya bukan selalu: "Potong pengeluaran lagi."</p>
+      <p>Menurut gw ya solusinya, naikkan kemampuan menghasilkan uang.</p>
+      <p>Gue penasaran. Menurut lo sekarang, orang lebih susah belajar hemat atau belajar nambah income? Kenapa?</p>
+    `
+  },
+
+  {
+    title: "AI Mengubah Apa yang Membuat Seorang Pekerja Berharga",
+    date: "2026-09-08",
+    category: "AI",
+    excerpt: "Pekerja yang berharga di masa depan mungkin bukan orang yang bekerja paling cepat.",
+    content: `
+      <p>Kecerdasan buatan sedang mengubah hubungan antara manusia dan pekerjaan.</p>
+      <p>Tugas yang dulu membutuhkan berjam-jam kini semakin bisa diselesaikan dalam hitungan menit. Ini bukan berarti setiap pekerjaan akan hilang. Ini berarti definisi pekerjaan yang berharga sedang berubah.</p>
+      <h2>Pertanyaan yang lebih penting</h2>
+      <p>Pertanyaannya bukan lagi sekadar apakah seseorang bisa mengerjakan suatu tugas. Pertanyaan yang lebih besar adalah apakah mereka bisa memutuskan apa yang perlu dikerjakan, mengapa itu penting, dan bagaimana mengubah hasilnya menjadi nilai.</p>
+      <p>Itulah sebabnya penilaian, komunikasi, kreativitas, penjualan, dan kemampuan memecahkan masalah bisa menjadi semakin penting.</p>
+    `
+  },
+
+  {
+    title: "Mengapa Mengandalkan Satu Penghasilan Semakin Berisiko",
+    date: "2026-09-07",
+    category: "Uang",
+    excerpt: "Satu gaji bisa terasa aman sampai perusahaan mengubah arah.",
+    content: `
+      <p>Selama beberapa dekade, banyak orang diajari rumus keuangan sederhana: cari pekerjaan yang stabil, dapatkan gaji, dan tabung sebagian darinya.</p>
+      <p>Masalahnya, stabilitas itu bisa bergantung pada keputusan bisnis orang lain.</p>
+      <h2>Ketahanan penghasilan</h2>
+      <p>Sumber penghasilan kedua tidak harus langsung menggantikan gaji. Tujuan awalnya bisa sesederhana mengurangi ketergantungan pada satu sumber saja.</p>
+      <p>Freelance, konsultasi, produk digital, konten, dan usaha kecil adalah beberapa contoh mesin penghasilan tambahan yang mungkin.</p>
+    `
+  },
+
+  {
+    title: "Amazon dan Kebangkitan Robot Gudang",
+    date: "2026-09-06",
+    category: "Teknologi",
+    excerpt: "Otomatisasi kini bergerak dari layar perangkat lunak ke tempat kerja fisik.",
+    content: `
+      <p>Robot semakin menjadi bagian dari logistik modern.</p>
+      <p>Gudang adalah contoh yang sangat menarik karena banyak tugas di sana bersifat berulang, terukur, dan terstruktur.</p>
+      <h2>Apa yang terjadi pada para pekerja?</h2>
+      <p>Otomatisasi tidak selalu menghilangkan semua pekerja. Yang sering terjadi adalah perubahan pada pekerja mana yang dibutuhkan dan apa yang mereka kerjakan.</p>
+      <p>Pertanyaan ekonomi yang lebih besar adalah apa yang terjadi ketika produktivitas naik lebih cepat daripada jumlah pekerja yang dibutuhkan untuk menghasilkan output yang sama.</p>
+    `
+  },
+
+  {
+    title: "Keterampilan Resesi yang Jarang Dibicarakan Orang",
+    date: "2026-09-05",
+    category: "Karier",
+    excerpt: "Di masa ekonomi sulit, menjadi berguna bisa lebih penting daripada memiliki gelar yang mentereng.",
+    content: `
+      <p>Resesi mengubah cara perusahaan memandang karyawannya.</p>
+      <p>Ketika kondisi keuangan semakin ketat, bisnis menjadi lebih selektif tentang aktivitas mana yang layak mendapat sumber daya.</p>
+      <h2>Kaitkan pekerjaan Anda dengan uang</h2>
+      <p>Orang yang bisa dengan jelas mengaitkan pekerjaannya dengan pendapatan, pengurangan biaya, retensi pelanggan, atau produktivitas biasanya lebih mudah dipertahankan.</p>
+      <p>Inilah salah satu alasan mengapa keterampilan komersial bisa sangat berharga di masa-masa yang tidak pasti.</p>
+    `
+  },
+
+  {
+    title: "Mengapa Anak Muda Perlu Belajar Menjual",
+    date: "2026-09-04",
+    category: "Karier",
+    excerpt: "Anda bisa memiliki produk yang luar biasa dan tetap gagal jika tidak ada yang membelinya.",
+    content: `
+      <p>Penjualan sering disalahpahami sebagai upaya membujuk orang membeli sesuatu yang tidak mereka butuhkan.</p>
+      <p>Penjualan yang baik sebenarnya lebih dekat pada memahami masalah dan mengomunikasikan solusi.</p>
+      <h2>Keterampilan yang tahan lama</h2>
+      <p>Setiap organisasi membutuhkan pelanggan, donatur, pengguna, klien, atau mitra. Karena itu, kemampuan memahami orang lain dan mengomunikasikan nilai tetap berguna di banyak industri.</p>
+    `
+  },
+
+  /*
+  ======================================================
+  SALIN BLOK INI UNTUK MENAMBAHKAN ARTIKEL BARU
+  ======================================================
+
+  {
+    title: "JUDUL ARTIKEL ANDA",
+    date: "2026-09-03",
+    category: "Bisnis",
+    excerpt: "Deskripsi singkat yang ditampilkan di halaman utama.",
+    content: `
+      <p>Paragraf pertama Anda.</p>
+
+      <h2>Subjudul Anda</h2>
+
+      <p>Paragraf kedua Anda.</p>
+
+      <p>Paragraf ketiga Anda.</p>
+    `
+  },
+
+  ======================================================
+  */
+
+  {
+    title: "Ekonomi di Balik Penghasilan Kedua",
+    date: "2026-09-03",
+    category: "Uang",
+    excerpt: "Penghasilan kedua bukan hanya soal menghasilkan lebih banyak uang.",
+    content: `
+      <p>Manfaat sebenarnya dari penghasilan kedua bisa berupa fleksibilitas pilihan.</p>
+      <p>Jika satu sumber penghasilan hilang, sumber penghasilan lain bisa memberi Anda waktu tambahan untuk beradaptasi.</p>
+      <p>Tujuannya tidak harus membangun sepuluh bisnis sekaligus. Bisa jadi tujuannya sesederhana menghindari hanya memiliki satu pintu keuangan.</p>
+    `
+  },
+
+  {
+    title: "Mengapa Keterampilan Lebih Penting di Masa Sulit",
+    date: "2026-09-02",
+    category: "Karier",
+    excerpt: "Ketidakpastian ekonomi mengubah nilai dari berbagai keterampilan.",
+    content: `
+      <p>Ketika keadaan sedang baik, perusahaan bisa mentolerir inefisiensi.</p>
+      <p>Ketika keadaan menjadi sulit, keterampilan yang benar-benar berguna menjadi lebih mudah dikenali.</p>
+      <h2>Bangun keterampilan yang bernilai ekonomi</h2>
+      <p>Carilah keterampilan yang membantu bisnis mendapatkan pelanggan, mempertahankan pelanggan, mengurangi biaya, meningkatkan operasional, atau menciptakan produk.</p>
+    `
+  },
+
+  {
+    title: "Internet Membuat Usaha Kecil Menjadi Mungkin",
+    date: "2026-09-01",
+    category: "Bisnis",
+    excerpt: "Teknologi secara drastis menurunkan biaya untuk menjangkau pelanggan.",
+    content: `
+      <p>Usaha kecil kini bisa menjangkau orang jauh melampaui lokasi fisiknya.</p>
+      <p>Sebuah situs web, akun media sosial, sistem pembayaran, dan iklan digital bisa membentuk infrastruktur bisnis yang ternyata sangat kuat.</p>
+    `
+  },
+
+  {
+    title: "Konten Adalah Aset Jangka Panjang",
+    date: "2026-08-31",
+    category: "Konten",
+    excerpt: "Konten yang bermanfaat bisa terus 'bekerja' setelah Anda menerbitkannya.",
+    content: `
+      <p>Sebagian besar pekerjaan tradisional berhenti menghasilkan nilai begitu hari kerja berakhir.</p>
+      <p>Konten bisa berperilaku berbeda. Artikel atau video yang bermanfaat bisa terus menarik perhatian jauh setelah dipublikasikan.</p>
+      <p>Inilah salah satu alasan mengapa konten bisa menjadi aset, bukan sekadar tugas biasa.</p>
+    `
+  },
+
+  {
+    title: "Mengapa AI Membuat Belajar Lebih Cepat",
+    date: "2026-08-30",
+    category: "AI",
+    excerpt: "AI dapat mengurangi jarak antara memiliki pertanyaan dan mendapatkan penjelasan.",
+    content: `
+      <p>Belajar selalu membutuhkan akses terhadap informasi dan umpan balik.</p>
+      <p>AI dapat memberikan penjelasan, contoh, latihan, ringkasan, dan sudut pandang alternatif hampir secara instan.</p>
+      <p>Tantangannya bukan lagi sekadar akses terhadap informasi. Tantangannya adalah mengetahui informasi mana yang layak mendapat perhatian.</p>
+    `
+  }
+
+];
+
+
+/*
+=========================================================
+AUTOMATIC BLOG ENGINE
+=========================================================
+*/
+
+function slugify(text) {
+  return text
+    .toLowerCase()
+    .trim()
+    .replace(/[^\w\s-]/g, "")
+    .replace(/\s+/g, "-");
+}
+
+function renderPosts() {
+
+  const list = document.getElementById("postList");
+  const query = document.getElementById("search").value.toLowerCase().trim();
+
+  const filtered = posts.filter(post => {
+    return (
+      post.title.toLowerCase().includes(query) ||
+      post.category.toLowerCase().includes(query) ||
+      post.excerpt.toLowerCase().includes(query)
+    );
+  });
+
+  if (!filtered.length) {
+    list.innerHTML = `<div class="empty">Tidak ada artikel ditemukan.</div>`;
+    return;
+  }
+
+  list.innerHTML = filtered.map((post, index) => {
+
+    const realIndex = posts.indexOf(post);
+
+    return `
+      <article
+        class="post-card"
+        onclick="openPost(${realIndex})"
+      >
+        <div class="post-meta">
+          ${formatDate(post.date)} · ${post.category}
+        </div>
+
+        <h2>${escapeHTML(post.title)}</h2>
+
+        <p>${escapeHTML(post.excerpt)}</p>
+
+        <span class="tag">Baca artikel →</span>
+      </article>
+    `;
+
+  }).join("");
+}
+
+function openPost(index) {
+
+  const post = posts[index];
+
+  if (!post) return;
+
+  document.getElementById("home").style.display = "none";
+  document.getElementById("article").classList.add("active");
+
+  document.getElementById("articleMeta").textContent =
+    `${formatDate(post.date)} · ${post.category}`;
+
+  document.getElementById("articleTitle").textContent =
+    post.title;
+
+  document.getElementById("articleContent").innerHTML =
+    post.content;
+
+  /*
+    Creates a browser URL like:
+
+    index.html#ai-is-changing-what-makes-a-worker-valuable
+
+    This means visitors can bookmark individual articles.
+  */
+  window.location.hash = slugify(post.title);
+
+  window.scrollTo({
+    top: 0,
+    behavior: "instant"
+  });
+}
+
+function goHome() {
+
+  document.getElementById("home").style.display = "block";
+  document.getElementById("article").classList.remove("active");
+
+  window.location.hash = "";
+
+  window.scrollTo({
+    top: 0,
+    behavior: "instant"
+  });
+
+  renderPosts();
+}
+
+function formatDate(dateString) {
+
+  const date = new Date(dateString + "T00:00:00");
+
+  return date.toLocaleDateString("id-ID", {
+    year: "numeric",
+    month: "long",
+    day: "numeric"
+  });
+}
+
+function escapeHTML(text) {
+
+  return text
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;");
+}
+
+
+/*
+=========================================================
+LOAD ARTICLE FROM URL HASH
+=========================================================
+*/
+
+function loadFromHash() {
+
+  const hash = window.location.hash.replace("#", "");
+
+  if (!hash) {
+    goHome();
+    return;
+  }
+
+  const index = posts.findIndex(
+    post => slugify(post.title) === hash
+  );
+
+  if (index !== -1) {
+    openPost(index);
+  } else {
+    goHome();
+  }
+}
+
+window.addEventListener("hashchange", loadFromHash);
+
+renderPosts();
+loadFromHash();
+
+</script>
+
+</body>
+</html>
